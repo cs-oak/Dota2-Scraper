@@ -40,7 +40,7 @@ hero_name = ''
 print 'Please enter 64-bit Steam Profile ID: ',
 id64 = raw_input()
 steamid64 = long(id64)
-dest = open('C:\Project\output.json', 'w+')
+dest = open('output.json', 'w+')
 request = Request('https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=ENTER_YOUR_ID&account_id='+id64)
 sleep(1)
 steamid32 = steamid64-76561197960265728
@@ -51,7 +51,7 @@ try:
 except URLError, e:
     print 'No kittez. Got an error code:', e
 dest.close()
-json_data = open('C:\Project\output.json')
+json_data = open('output.json')
 data = json.load(json_data)
 for i in data["result"]["matches"]:
 	for j in i["players"]:
@@ -97,7 +97,7 @@ load_failures = 0
 wins = 0
 for k in xrange(len(matches_list)):
 	match_count+=1
-	match_holder = open('C:\Project\\temp_match.json', 'w+')
+	match_holder = open('temp_match.json', 'w+')
 	required_match = str(matches_list[k])
 	request_1 = Request('https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?key=ENTER_YOUR_ID&match_id='+required_match)
 	sleep(1)
@@ -109,7 +109,7 @@ for k in xrange(len(matches_list)):
 		print 'No puppez. Got an error code:', f
 		continue
 	match_holder.close()
-	json_data_2 = open('C:\Project\\temp_match.json')
+	json_data_2 = open('temp_match.json')
 	match_data = json.load(json_data_2)
 	current_role = ''
 	for z in match_data["result"]["players"]:
@@ -378,7 +378,7 @@ print 'AFKs: ', afk_abandons
 
 player_out = {'fh':hero_name,'fr':favorite_role,'kda':average_kda,'kdaf':average_kda_fav,'kdad':kda_deviation,'gpm':average_gpm,'xpm':average_xpm,'loadf':load_failures,'disc':disconnects,'abdn':disconnect_abandons,'afk':afk_abandons,'rgqt':intentional_abandons,'id':id64}
 
-dest_2 = open('C:\Project\pickout.json', 'w+')
+dest_2 = open('pickout.json', 'w+')
 jout = json.dumps(player_out)
 print >> dest_2, jout
 

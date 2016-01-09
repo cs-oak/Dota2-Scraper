@@ -14,18 +14,18 @@ srsPunCt=0
 gamPunCt=0
 count=0
 locvar = {}
-json_data = open('C:\Project\pickout.json')
+json_data = open('pickout.json')
 match_data = json.load(json_data)
 for i in match_data:
 	locvar[i] = match_data[i]
-json_data_1 = open('C:\Project\comout.json')
+json_data_1 = open('comout.json')
 com_data = json.load(json_data_1)
 if locvar['id'] == com_data["id"]:
 	id64 = locvar['id']
 	count = com_data["count"]
-check = os.path.exists('C:\Project\history_'+id64+'.json')
+check = os.path.exists('history_'+id64+'.json')
 if check == True:
-	json_data = open('C:\Project\history_'+id64+'.json')
+	json_data = open('history_'+id64+'.json')
 	data = json.load(json_data)
 	prevComPun = data["comPunish"]
 	prevGamPun = data["gamPunish"]
@@ -56,7 +56,7 @@ if comPun > 50:
 if gamPun > 20:
 	gamBan = prevGamBan+1
 feedback = {'comPunish':comPunCt,'gamPunish':gamPunCt,'srsPunish':srsPunCt,'comBans':comBan,'gamBans':gamBan}
-dest = open('C:\Project\history_'+id64+'.json','w+')
+dest = open('history_'+id64+'.json','w+')
 jout = json.dumps(feedback)
 print >> dest, jout
 

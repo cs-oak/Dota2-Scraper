@@ -22,7 +22,7 @@ hero_meter = {'Anti-Mage':0,'Axe':0,'Bane':0,'Bloodseeker':0,'Crystal Maiden':0,
 #acquire last 100 match ID's from GetMatHis
 
 match_list=list()
-dest = open('c:\Project\pick_out.json', 'w+')
+dest = open('pick_out.json', 'w+')
 request = Request('https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=ENTER_YOUR_ID')
 sleep(1)
 try:
@@ -41,7 +41,7 @@ for i in data["result"]["matches"]:
 #iterate for each match ID
 
 for z in xrange(len(match_list)):
-	dest_1 = open('c:\Project\match.json', 'w+')
+	dest_1 = open('match.json', 'w+')
 	request_1 = Request('https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?key=ENTER_YOUR_ID&match_id='+str(match_list[z]))
 	sleep(1)
 	try:

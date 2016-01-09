@@ -13,9 +13,9 @@ scanid = str(steamid64)
 count = 0
 status=0
 content = list()
-with open("C:\Project\samplechat.txt") as f:
+with open("samplechat.txt") as f:
 	content = f.readlines()
-with open("C:\Project\slangdb.txt") as g:
+with open("slangdb.txt") as g:
 	english = g.readlines()
 
 #end read
@@ -40,7 +40,7 @@ elif count > 20:
 		status = 4
 
 com_out={'id':scanid,'count':count}
-dest = open('C:\Project\comout.json', 'w+')
+dest = open('comout.json', 'w+')
 jout = json.dumps(com_out)
 print >> dest, jout
 		
